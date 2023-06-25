@@ -1,11 +1,16 @@
+import { AnimatePresence } from "framer-motion";
+import { Suspense } from "react";
 import { useRecoilValue } from "recoil";
+import logo from "../public/logo.png";
 import Pagination from "./components/Pagination";
+import PairModal from "./components/PairModal";
+import useModal from "./lib/hooks/useModal";
 import usePagination from "./lib/hooks/usePagination";
 import getExchangesState from "./recoil/getExchangesState";
-
 const App = () => {
   const { page, setPage, handleClickNextBtn, handleClickPrevBtn } =
     usePagination(1);
+  const [toggle, id, handleClickToggle] = useModal();
   const { data: exchanges, totalPage } = useRecoilValue(
     getExchangesState(page)
   );
@@ -13,6 +18,10 @@ const App = () => {
   const pageArr = Array.from({ length: totalPage }).fill(1);
   return (
     <section className="w-full max-w-7xl px-6">
+      <h1 className="pb-12 pt-4">
+        <img src={logo} alt="code logo" />
+      </h1>
+
       <table className="w-full border-separate border-spacing-0 overflow-hidden rounded-md border bg-white shadow-md">
         <thead className="text-left">
           <tr>
@@ -26,6 +35,7 @@ const App = () => {
         <tbody className="bg-white">
           {exchanges.map((exchange) => (
             <tr
+              onClick={() => handleClickToggle(exchange.id)}
               key={exchange.id}
               className="cursor-pointer transition-colors hover:bg-code-horizon-blue/10"
             >
@@ -73,6 +83,14 @@ const App = () => {
         handleClickNextBtn={handleClickNextBtn}
         handleClickPrevBtn={handleClickPrevBtn}
       />
+
+      <Suspense fallback={<div>loading...</div>}>
+        <AnimatePresence>
+          {toggle ? (
+            <PairModal handleClickToggle={handleClickToggle} id={id} />
+          ) : null}
+        </AnimatePresence>
+      </Suspense>
     </section>
   );
 };
