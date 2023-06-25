@@ -14,9 +14,6 @@ export const getAllExchanges = async (page: number) => {
 export const getExchange = async (id: string) => {
   const res = await instance.get(`/exchanges/${id}`);
   const data: ITicker = res.data;
-  const perPage = res.headers["per-page"];
-  const total = res.headers.total;
-  const totalPage = Math.ceil(total / perPage);
 
-  return { data, totalPage };
+  return data;
 };

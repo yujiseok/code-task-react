@@ -10,7 +10,7 @@ const PairModal = ({
   handleClickToggle: VoidFunction;
   id: string;
 }) => {
-  const { data: exchange, totalPage } = useRecoilValue(getExchangeState(id));
+  const exchange = useRecoilValue(getExchangeState(id));
 
   return (
     <ModalPortal>
@@ -29,7 +29,9 @@ const PairModal = ({
           className="min-w-[760px] rounded-md bg-white px-6 py-4 shadow-xl"
         >
           <div className="flex justify-end">
-            <button onClick={handleClickToggle}>X</button>
+            <button onClick={handleClickToggle} className="text-3xl">
+              ×
+            </button>
           </div>
 
           <div className="mb-6 mt-2 flex items-center justify-center gap-3">
