@@ -1,5 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import Pagination from "./components/Pagination";
 import PairModal from "./components/PairModal";
@@ -18,6 +18,13 @@ const App = () => {
     setFilter(e.target.value as FilterState);
 
   const pageArr = Array.from({ length: totalPage }).fill(1);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [exchanges]);
+
   return (
     <section className="w-full max-w-7xl px-6">
       <table className="w-full border-separate border-spacing-0 overflow-hidden rounded-md border bg-white shadow-md">
