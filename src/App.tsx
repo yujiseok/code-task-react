@@ -1,7 +1,6 @@
 import { AnimatePresence } from "framer-motion";
 import { Suspense } from "react";
 import { useRecoilValue } from "recoil";
-import logo from "../public/logo.png";
 import Pagination from "./components/Pagination";
 import PairModal from "./components/PairModal";
 import useModal from "./lib/hooks/useModal";
@@ -18,10 +17,6 @@ const App = () => {
   const pageArr = Array.from({ length: totalPage }).fill(1);
   return (
     <section className="w-full max-w-7xl px-6">
-      <h1 className="pb-12 pt-4">
-        <img src={logo} alt="code logo" />
-      </h1>
-
       <table className="w-full border-separate border-spacing-0 overflow-hidden rounded-md border bg-white shadow-md">
         <thead className="text-left">
           <tr>
