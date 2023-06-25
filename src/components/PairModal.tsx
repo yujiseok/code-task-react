@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import { useRecoilValue } from "recoil";
+import useClickOutside from "../lib/hooks/useClickOutside";
 import getExchangeState from "../recoil/getExchangeState";
 import ModalPortal from "./ModalPortal";
 
@@ -11,6 +13,9 @@ const PairModal = ({
   id: string;
 }) => {
   const exchange = useRecoilValue(getExchangeState(id));
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useClickOutside(modalRef, handleClickToggle);
 
   return (
     <ModalPortal>
@@ -27,6 +32,7 @@ const PairModal = ({
           exit="exit"
           variants={modalVariants}
           className="min-w-[760px] rounded-md bg-white px-6 py-4 shadow-xl"
+          ref={modalRef}
         >
           <div className="flex justify-end">
             <button onClick={handleClickToggle} className="text-3xl">
