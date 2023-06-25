@@ -68,15 +68,7 @@ const App = () => {
                     alt={exchange.name}
                     className="h-8 w-8 rounded-full border border-slate-50 shadow-lg"
                   />
-                  <div>
-                    <a
-                      href={exchange.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {exchange.name}
-                    </a>
-                  </div>
+                  <div>{exchange.name}</div>
                 </div>
               </td>
               <td className="p-4">
