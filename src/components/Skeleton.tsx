@@ -17,17 +17,17 @@ const Skeleton = () => {
               <td className="p-4">
                 <div className="flex items-center gap-3">
                   <div className="h-8 w-8 rounded-full bg-gray-300" />
-                  <div className="h-8 w-80 rounded-md bg-gray-300" />
+                  <div className="h-8 w-60 rounded-md bg-gray-300" />
                 </div>
               </td>
               <td className="p-4">
-                <div className="h-8 w-32 rounded-md bg-gray-300" />
+                <div className="h-8 w-20 rounded-md bg-gray-300" />
               </td>
               <td className="p-4">
-                <div className="h-8 w-32 rounded-md bg-gray-300" />
+                <div className="h-8 w-20 rounded-md bg-gray-300" />
               </td>
               <td className="p-4">
-                <div className="h-8 w-32 rounded-md bg-gray-300" />
+                <div className="h-8 w-20 rounded-md bg-gray-300" />
               </td>
               <td className="p-4">
                 <div className="h-8 w-36 rounded-md bg-gray-300" />

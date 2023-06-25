@@ -36,7 +36,7 @@ const PairModal = ({
             <img
               src={exchange.image}
               alt={exchange.name}
-              className="h-10 w-10 rounded-full"
+              className="h-10 w-10 rounded-full border border-slate-50 shadow-lg"
             />
             <div className="flex items-center justify-center gap-2 text-2xl font-semibold">
               <h3>
