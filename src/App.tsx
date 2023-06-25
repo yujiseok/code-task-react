@@ -1,10 +1,11 @@
-import { useState } from "react";
 import { useRecoilValue } from "recoil";
 import Pagination from "./components/Pagination";
+import usePagination from "./lib/hooks/usePagination";
 import getExchangesState from "./recoil/getExchangesState";
 
 const App = () => {
-  const [page, setPage] = useState(1);
+  const { page, setPage, handleClickNextBtn, handleClickPrevBtn } =
+    usePagination(1);
   const { data: exchanges, totalPage } = useRecoilValue(
     getExchangesState(page)
   );
@@ -69,6 +70,8 @@ const App = () => {
         pageArr={pageArr}
         page={page}
         setPage={setPage}
+        handleClickNextBtn={handleClickNextBtn}
+        handleClickPrevBtn={handleClickPrevBtn}
       />
     </section>
   );

@@ -3,20 +3,18 @@ interface PaginationProps {
   pageArr: unknown[];
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
+  handleClickNextBtn: VoidFunction;
+  handleClickPrevBtn: VoidFunction;
 }
 
-const Pagination = ({ totalPage, pageArr, page, setPage }: PaginationProps) => {
-  const handleClickNextBtn = () => {
-    if (page !== 1) {
-      setPage(page - 1);
-    }
-  };
-  const handleClickPrevBtn = () => {
-    if (page !== totalPage) {
-      setPage(page + 1);
-    }
-  };
-
+const Pagination = ({
+  totalPage,
+  pageArr,
+  page,
+  setPage,
+  handleClickNextBtn,
+  handleClickPrevBtn,
+}: PaginationProps) => {
   return (
     <div className="my-8 flex justify-center gap-2">
       <button
