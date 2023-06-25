@@ -67,7 +67,7 @@ const PairModal = ({
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr className="bg-white">
                     <td className="border border-slate-200 p-2">
                       {ticker.base}
                     </td>
