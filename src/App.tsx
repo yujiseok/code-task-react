@@ -1,5 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { useRecoilValue } from "recoil";
 import Pagination from "./components/Pagination";
 import PairModal from "./components/PairModal";
@@ -9,10 +9,13 @@ import getExchangesState from "./recoil/getExchangesState";
 const App = () => {
   const { page, setPage, handleClickNextBtn, handleClickPrevBtn } =
     usePagination(1);
+  const [filter, setFilter] = useState<FilterState>("기본");
   const [toggle, id, handleClickToggle] = useModal();
   const { data: exchanges, totalPage } = useRecoilValue(
-    getExchangesState(page)
+    getExchangesState({ page, filter })
   );
+  const handleChangeFilter = (e: React.ChangeEvent<HTMLSelectElement>) =>
+    setFilter(e.target.value as FilterState);
 
   const pageArr = Array.from({ length: totalPage }).fill(1);
   return (
@@ -24,7 +27,20 @@ const App = () => {
             <th className="border-b border-slate-200 p-4">설립연도</th>
             <th className="border-b border-slate-200 p-4">신뢰도</th>
             <th className="border-b border-slate-200 p-4">신뢰도 순위</th>
-            <th className="border-b border-slate-200 p-4">거래량</th>
+            <th className="border-b border-slate-200 p-4">
+              <div className="flex items-center gap-4">
+                거래량
+                <select
+                  className="p-2 outline-none"
+                  defaultValue={filter}
+                  onChange={handleChangeFilter}
+                >
+                  <option value="기본">기본</option>
+                  <option value="오름차순">오름차순 ▲</option>
+                  <option value="내림차순">내림차순 ▼</option>
+                </select>
+              </div>
+            </th>
           </tr>
         </thead>
         <tbody className="bg-white">
