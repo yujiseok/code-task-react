@@ -1,14 +1,9 @@
-import { atom, selector } from "recoil";
+import { selectorFamily } from "recoil";
 import { getAllExchanges } from "../api/exchanges";
-export const pageState = atom({
-  key: "pageState",
-  default: 1,
-});
 
-const getExchangesState = selector({
+const getExchangesState = selectorFamily({
   key: "exchangesState",
-  get: async ({ get }) => {
-    const page = get(pageState);
+  get: (page: number) => async () => {
     const data = await getAllExchanges(page);
 
     return data;
