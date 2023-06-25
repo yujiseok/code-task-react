@@ -26,7 +26,7 @@ const App = () => {
           {exchanges.map((exchange) => (
             <tr
               key={exchange.id}
-              className="cursor-pointer transition-colors hover:bg-slate-100"
+              className="cursor-pointer transition-colors hover:bg-code-horizon-blue/10"
             >
               <td className="p-4">
                 <div className="flex items-center gap-3">
@@ -36,10 +36,8 @@ const App = () => {
                         ? "https://catalystcci.com/wp-content/uploads/gray-image-placeholder.png"
                         : exchange.image
                     }
-                    width={32}
-                    height={32}
                     alt={exchange.name}
-                    className="rounded-full border border-slate-50 shadow-lg"
+                    className="h-8 w-8 rounded-full border border-slate-50 shadow-lg"
                   />
                   <div>
                     <a

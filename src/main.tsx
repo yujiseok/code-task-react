@@ -8,7 +8,7 @@ import Skeleton from "./components/Skeleton.tsx";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <RecoilRoot>
-      <main className="grid min-h-screen place-items-center px-4 py-6">
+      <main className="grid min-h-screen place-items-center px-4 py-6 text-code-black">
         <Suspense fallback={<Skeleton />}>
           <App />
         </Suspense>
