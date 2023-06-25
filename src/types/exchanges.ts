@@ -1,5 +1,4 @@
-interface IExchange {
-  id: string;
+interface IExchangeBase {
   name: string;
   year_established: number;
   country: string;
@@ -13,9 +12,23 @@ interface IExchange {
   trade_volume_24h_btc_normalized: number;
 }
 
-interface ITicker {
-  name: string;
+export interface IExchange extends IExchangeBase {
+  id: string;
+}
+
+export interface ITicker extends IExchangeBase {
+  facebook_url: string;
+  reddit_url: string;
+  telegram_url: string;
+  slack_url: string;
+  other_url_1: string;
+  other_url_2: string;
+  twitter_handle: string;
+  centralized: boolean;
+  public_notice: string;
+  alert_notice: string;
   tickers: Ticker[];
+  status_updates: StatusUpdate[];
 }
 
 interface Ticker {
@@ -49,4 +62,26 @@ interface Ticker {
   token_info_url: any;
   coin_id: string;
   target_coin_id?: string;
+}
+export interface StatusUpdate {
+  description: string;
+  category: string;
+  created_at: string;
+  user: string;
+  user_title: string;
+  pin: boolean;
+  project: Project;
+}
+
+export interface Project {
+  type: string;
+  id: string;
+  name: string;
+  image: Image;
+}
+
+export interface Image {
+  thumb: string;
+  small: string;
+  large: string;
 }
