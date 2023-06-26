@@ -7,24 +7,22 @@ export const getAllExchanges = async (page: number, filter: FilterState) => {
   const perPage = res.headers["per-page"];
   const total = res.headers.total;
   const totalPage = Math.ceil(total / perPage);
+
+  let sortedData = data;
   if (filter === "오름차순") {
-    return {
-      data: data.sort(
-        (a, b) => a.trade_volume_24h_btc - b.trade_volume_24h_btc
-      ),
-      totalPage,
-    };
+    sortedData = data.sort(
+      (a, b) => a.trade_volume_24h_btc - b.trade_volume_24h_btc
+    );
+  } else if (filter === "내림차순") {
+    sortedData = data.sort(
+      (a, b) => b.trade_volume_24h_btc - a.trade_volume_24h_btc
+    );
   }
 
-  if (filter === "내림차순") {
-    return {
-      data: data.sort(
-        (a, b) => b.trade_volume_24h_btc - a.trade_volume_24h_btc
-      ),
-      totalPage,
-    };
-  }
-  return { data, totalPage };
+  return {
+    data: sortedData,
+    totalPage,
+  };
 };
 
 export const getExchange = async (id: string) => {
