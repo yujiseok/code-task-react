@@ -6,16 +6,16 @@ import getExchangeState from "../recoil/getExchangeState";
 import ModalPortal from "./ModalPortal";
 
 const PairModal = ({
-  handleClickToggle,
+  handleClickModal,
   id,
 }: {
-  handleClickToggle: VoidFunction;
+  handleClickModal: VoidFunction;
   id: string;
 }) => {
   const exchange = useRecoilValue(getExchangeState(id));
   const modalRef = useRef<HTMLDivElement>(null);
 
-  useClickOutside(modalRef, handleClickToggle);
+  useClickOutside(modalRef, handleClickModal);
 
   return (
     <ModalPortal>
@@ -35,7 +35,7 @@ const PairModal = ({
           ref={modalRef}
         >
           <div className="flex justify-end">
-            <button onClick={handleClickToggle} className="text-3xl">
+            <button onClick={handleClickModal} className="text-3xl">
               ×
             </button>
           </div>

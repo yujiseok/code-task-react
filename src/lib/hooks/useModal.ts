@@ -5,7 +5,7 @@ type UseModal = () => [boolean, string, (id?: string) => void];
 const useModal: UseModal = () => {
   const [toggle, setToggle] = useState(false);
   const [value, setValue] = useState("");
-  const handleClickToggle = (id?: string) => {
+  const handleClickModal = (id?: string) => {
     setToggle((prev) => !prev);
 
     if (id) {
@@ -13,6 +13,6 @@ const useModal: UseModal = () => {
     }
   };
 
-  return [toggle, value, handleClickToggle];
+  return [toggle, value, handleClickModal];
 };
 export default useModal;
