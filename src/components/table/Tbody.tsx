@@ -1,12 +1,11 @@
 import { IExchange } from "../../types/exchanges";
 
-const Tbody = ({
-  exchanges,
-  handleClickModal,
-}: {
+interface TbodyProps {
   exchanges: IExchange[];
   handleClickModal: (id?: string | undefined) => void;
-}) => {
+}
+
+const Tbody = ({ exchanges, handleClickModal }: TbodyProps) => {
   return (
     <tbody className="bg-white">
       {exchanges.map((exchange) => (
