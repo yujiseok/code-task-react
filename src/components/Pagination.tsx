@@ -15,11 +15,13 @@ const Pagination = ({
   handleClickNextBtn,
   handleClickPrevBtn,
 }: PaginationProps) => {
+  console.log(page);
+
   return (
     <div className="my-8 flex justify-center gap-2">
       <button
         disabled={page === 1}
-        onClick={handleClickNextBtn}
+        onClick={handleClickPrevBtn}
         className="disabled:pointer-events-none disabled:opacity-50"
       >
         prev
@@ -39,7 +41,7 @@ const Pagination = ({
 
       <button
         disabled={page === totalPage}
-        onClick={handleClickPrevBtn}
+        onClick={handleClickNextBtn}
         className="disabled:pointer-events-none disabled:opacity-50"
       >
         next

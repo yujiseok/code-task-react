@@ -22,7 +22,9 @@ const Thead = ({ filter, handleChangeFilter }: TheadProps) => {
               onChange={handleChangeFilter}
             >
               {OPT_ARR.map((opt) => (
-                <option value={opt.value}>{opt.content}</option>
+                <option key={opt.content} value={opt.value}>
+                  {opt.content}
+                </option>
               ))}
             </select>
           </div>

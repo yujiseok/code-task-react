@@ -13,7 +13,7 @@ const App = () => {
   const handleChangeFilter = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setFilter(e.target.value as FilterState);
   const { page, setPage, handleClickNextBtn, handleClickPrevBtn } =
-    usePagination(1);
+    usePagination();
   const [toggle, id, handleClickModal] = useModal();
   const { data: exchanges, totalPage } = useRecoilValue(
     getExchangesState({ page, filter })
